@@ -17,9 +17,7 @@ $(document).ready(function() {
 
 	/* About me slider */
 	$('.about-me-slider').slick({
-		slidesToShow: 1,
-		prevArrow: '<span class="span-arrow slick-prev"><</span>',
-		nextArrow: '<span class="span-arrow slick-next">></span>'
+		slidesToShow: 1
 	});
 
 	/* Blog slider */
@@ -38,71 +36,6 @@ $(document).ready(function() {
 	});
 
 
-	/* Contact form validation */
-	var contactForm = function() {
-		if ($('#contactForm').length > 0 ) {
-			$( "#contactForm" ).validate( {
-				rules: {
-					name: "required",
-					email: {
-						required: true,
-						email: true
-					},
-					message: {
-						required: true,
-						minlength: 5
-					}
-				},
-				messages: {
-					name: "Please enter your name",
-					email: "Please enter a valid email address",
-					message: "Please enter a message"
-				},
-				/* submit via ajax */
-				submitHandler: function(form) {   
-					var $submit = $('.submitting'),
-					waitText = 'Submitting...';
-
-					$.ajax({    
-						type: "POST",
-						url: "php/sendEmail.php",
-						data: $(form).serialize(),
-
-						beforeSend: function() { 
-							$submit.css('display', 'block').text(waitText);
-						},
-						success: function(msg) {
-							if (msg == 'OK') {
-								$('#form-message-warning').hide();
-								setTimeout(function(){
-									$('#contactForm').fadeOut();
-								}, 1000);
-								setTimeout(function(){
-									$('#form-message-success').fadeIn();   
-								}, 1400);
-
-							} else {
-								$('#form-message-warning').html(msg);
-								$('#form-message-warning').fadeIn();
-								$submit.css('display', 'none');
-							}
-						},
-						error: function() {
-							$('#form-message-warning').html("Something went wrong. Please try again.");
-							$('#form-message-warning').fadeIn();
-							$submit.css('display', 'none');
-						}
-					});       
-				}
-
-			} );
-		}
-	};
-
-
-	$(function(){
-		contactForm();
-	});
 
 
 });
@@ -172,4 +105,11 @@ var item = document.getElementById('slides').getElementsByTagName('img');
 var opacity = item[i].style.opacity >= 0 ? item[i].style.opacity : 1;
 item[i].style.opacity = opacity - 0.025
 }
-    
+
+function ttt(){
+	document.getElementById('form-message-success').innerHTML="salam"
+}
+
+function ssh(){
+	window.alert('ok');
+}
